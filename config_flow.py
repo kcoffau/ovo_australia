@@ -3,7 +3,7 @@ from homeassistant import config_entries
 from homeassistant.const import CONF_NAME
 from .const import DOMAIN, CONF_EV_PLAN, CONF_FREE_LUNCH
 
-class YourIntegrationConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+class OvoAustraliaConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     async def async_step_user(self, user_input=None):
         errors = {}
 
