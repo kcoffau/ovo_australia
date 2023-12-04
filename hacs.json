@@ -2,10 +2,10 @@
   "name": "OVO Australia",
   "description": "Integration for OVO Australia",
   "domain": "ovo_australia",
-  "documentation": "https://link-to-your-documentation",
+  "documentation": "https://github.com/kcoffau/ovo_australia",
   "config_flow": true,
   "version": "0.1.0",
-  "frontend": "https://github.com/your-github-username/your-repository-name",
+  "frontend": "https://github.com/kcoffau/ovo_australia",
   "country": ["Australia"],
   "footer": "Powered by OVO Australia",
   "homeassistant": ">=2021.10.0"
