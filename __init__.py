@@ -1,5 +1,5 @@
 # __init__.py
-DOMAIN = "your_integration"
+DOMAIN = "ovo_australia"
 
 async def async_setup(hass, config):
     return True
@@ -7,7 +7,7 @@ async def async_setup(hass, config):
 config_entry = config_entries.ConfigEntry(
     version=1,
     domain=DOMAIN,
-    title="Your Integration",
+    title="OVO Australia",
     data={},
     source="user",
     connection_class=config_entries.CONN_CLASS_UNKNOWN,
