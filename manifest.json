@@ -1,0 +1,6 @@
+{
+    "domain": "your_integration",
+    "name": "Your Integration",
+    "config_flow": true,
+    "documentation": "https://link-to-your-documentation",
+}
