@@ -1,5 +1,5 @@
 # const.py
 
-DOMAIN = "your_integration"
+DOMAIN = "ovo_australia"
 CONF_EV_PLAN = "ev_plan"
 CONF_FREE_LUNCH = "free_lunch"
