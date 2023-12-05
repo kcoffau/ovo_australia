@@ -2,7 +2,7 @@
   "name": "OVO Australia",
   "description": "Integration for OVO Australia",
   "domain": "ovo_australia",
-  "documentation": "https://github.com/kcoffau/ovo_australiareadme.md",
+  "documentation": "https://github.com/kcoffau/ovo_australia/readme.md",
   "config_flow": true,
   "version": "0.1.0",
   "frontend": "https://github.com/kcoffau/ovo_australia",
