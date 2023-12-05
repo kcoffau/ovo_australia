@@ -6,6 +6,6 @@
   "config_flow": true,
   "version": "0.1.0",
   "frontend": "https://github.com/kcoffau/ovo_australia",
-  "footer": "Powered by OVO Australia",
+  "footer": "Powered by HACS",
   "homeassistant": ">=2021.10.0"
 }
