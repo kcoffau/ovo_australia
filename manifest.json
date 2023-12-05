@@ -2,5 +2,9 @@
     "domain": "ovo_australia",
     "name": "OVO Australia",
     "config_flow": true,
-    "documentation": "https://github.com/kcoffau/ovo_australiareadme.md",
+    "documentation": "https://github.com/kcoffau/ovo_australia/readme.md",
+    "issue_tracker": "https://github.com/kcoffau/ovo_australia/issues",
+    "version": "0.1.0",
+    "dependencies": [],
+    "codeowners": ["@kcoffau"],
 }
