@@ -7,5 +7,6 @@
   "version": "0.1.0",
   "frontend": "https://github.com/kcoffau/ovo_australia",
   "footer": "Powered by Aussie Ingenuity",
-  "homeassistant": ">=2021.10.0"
+  "homeassistant": "2021.10.0"
+  "render_readme": true,
 }
