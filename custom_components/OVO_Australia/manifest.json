@@ -6,5 +6,5 @@
     "issue_tracker": "https://github.com/kcoffau/ovo_australia/issues",
     "version": "0.1.0",
     "dependencies": [],
-    "codeowners": ["@kcoffau"],
+    "codeowners": ["@kcoffau"]
 }
