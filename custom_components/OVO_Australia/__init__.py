@@ -1,20 +1,15 @@
 # __init__.py
-DOMAIN = "ovo_australia"
+from homeassistant.config_entries import ConfigEntry
+from .const import DOMAIN
 
 async def async_setup(hass, config):
+    # Your setup logic, if any
     return True
 
-config_entry = config_entries.ConfigEntry(
-    version=1,
-    domain=DOMAIN,
-    title="OVO Australia",
-    data={},
-    source="user",
-    connection_class=config_entries.CONN_CLASS_UNKNOWN,
-)
-
 async def async_setup_entry(hass, entry):
+    # Your setup entry logic, if any
     return True
 
 async def async_remove_entry(hass, entry):
+    # Your remove entry logic, if any
     return True
