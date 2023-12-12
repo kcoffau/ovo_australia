@@ -1,1 +1,134 @@
-a
+alias: Ovo ev plan - Charge During Charge Window and SOC < Target
+description: Charges between 12am and 6am uptown the SOC limit.
+trigger:
+  - platform: time
+    at: "00:00:00"
+  - platform: time
+    at: "06:00:00"
+  - platform: time
+    at: "11:00:00"
+  - platform: time
+    at: "14:00:00"
+  - platform: time_pattern
+    seconds: /30
+    hours: "*"
+    minutes: "*"
+  - platform: state
+    entity_id:
+      - input_boolean.ovo_ev_plan
+condition:
+  - condition: state
+    entity_id: input_boolean.ovo_ev_plan
+    state: "on"
+action:
+  - choose:
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: numeric_state
+                entity_id: sensor.victron_battery_state_of_charge
+                above: 0
+                below: input_number.ovo_ev_plan_soc_target
+              - condition: time
+                after: "23:59:59"
+                before: "05:59:59"
+                weekday:
+                  - sun
+                  - mon
+                  - tue
+                  - wed
+                  - thu
+                  - fri
+                  - sat
+            alias: SOC < Target AND time is in EV window
+        sequence:
+          - service: input_button.press
+            data: {}
+            target:
+              entity_id: input_button.import
+        alias: EV Window - Charge
+      - conditions:
+          - alias: SOC Check inside EV window
+            condition: and
+            conditions:
+              - condition: numeric_state
+                entity_id: sensor.victron_battery_state_of_charge
+                below: 101
+                above: input_number.ovo_ev_plan_soc_target
+              - condition: time
+                before: "05:59:59"
+                after: "23:59:59"
+                weekday:
+                  - sat
+                  - fri
+                  - thu
+                  - wed
+                  - tue
+                  - mon
+                  - sun
+        sequence:
+          - service: input_button.press
+            data: {}
+            target:
+              entity_id: input_button.self_service
+            enabled: false
+          - service: input_number.set_value
+            target:
+              entity_id: input_number.input_current_slider
+            data:
+              value: "{{ states('sensor.victron_ac_l1') | float(0) | round(-1) }}"
+        alias: EV Window - Stop Charge, Power from Grid
+      - conditions:
+          - alias: SOC Check inside FREE window
+            condition: and
+            conditions:
+              - condition: time
+                before: "13:59:59"
+                after: "11:00:00"
+                weekday:
+                  - sat
+                  - fri
+                  - thu
+                  - wed
+                  - tue
+                  - mon
+                  - sun
+        sequence:
+          - service: input_button.press
+            data: {}
+            target:
+              entity_id: input_button.import
+        alias: Free Lunch - Charge
+      - conditions:
+          - alias: Check in peak window
+            condition: or
+            conditions:
+              - condition: time
+                before: "10:59:59"
+                after: "06:00:00"
+                weekday:
+                  - sat
+                  - fri
+                  - thu
+                  - wed
+                  - tue
+                  - mon
+                  - sun
+              - condition: time
+                before: "23:59:59"
+                after: "14:00:00"
+                weekday:
+                  - sat
+                  - fri
+                  - thu
+                  - wed
+                  - tue
+                  - mon
+                  - sun
+        sequence:
+          - service: input_button.press
+            data: {}
+            target:
+              entity_id: input_button.self_service
+        alias: Peak Period - Stop Charge
+mode: single
